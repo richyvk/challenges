@@ -27,3 +27,24 @@ def calc_word_value(word):
                 for letter in word.upper()])
 
     return score
+
+
+def max_word_value(words=DICTIONARY):
+    """(txt file) -> str
+
+    Return word with best scrabble score in words file.
+
+    >>> max_word_value(words=DICTIONARY)
+
+    """
+    words_list = load_words(words)
+    current_best = ''
+    current_best_score = 0
+
+    for word in words_list:
+        score = calc_word_value(word)
+        if score > current_best_score:
+            current_best_score = score
+            current_best = word
+
+    return current_best
